@@ -1,0 +1,101 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+ background-color: bisque;
+
+
+}
+img{
+    height: 150px;
+    width: 150px;
+    margin-top: 10px;
+    margin-left: 110px;
+    border-radius: 20px;
+
+}
+input{
+    border-radius: 5px;
+    height: 30px;
+    width: 80px;
+   margin: 20px;
+   position: relative; left: 22px;
+   border: none;
+   text-align: center;
+}
+.remove{
+ text-align: center;
+ position: relative; left: 290px;
+ background-color: crimson;
+ color: white;
+ font-weight: bold;
+ border-radius: 5px;
+ height: 35px;
+ border: none;
+ width: 85px;
+}
+h1{
+    color: black;
+    position: fixed; 
+    margin-left: 300px;
+    font-size: 25px;
+    font-weight: bold;
+
+}
+h3{
+    color: orangered;
+    font-weight: bold;
+    position: absolute; 
+    margin-left: 300px;
+    margin-top: 50px;
+  
+}
+h5{
+    font-weight: bold;
+    text-align: center;
+    position:absolute; 
+    margin-left: 350px;
+    padding: 30px;;
+}
+.Total{
+    color: black;
+padding: 15px;
+ margin-top: -1px;
+
+}
+.minus{
+background-color: lightgrey;
+font-size: 20px;
+font-weight: bold;
+border-radius: 5px;
+height: 35px;
+width: 35px;
+position: relative; left: 42px;
+border: none;
+}
+.plus{
+background-color: lightgrey;
+font-size: 18px;
+font-weight: bold;
+border-radius: 5px;
+height: 35px;
+width: 35px;
+border: none;
+
+}
+.ProductText{
+position: absolute; 
+margin: 37px;
+width: 100px;
+border: none;
+background-color: bisque;
+margin-left: 450px; font-size: 20px;
+font-weight: boldch;
+
+}
+.input_info{
+    position: relative;
+    margin-left :60px; 
+    top: -65px; 
+    width: 120px; 
+    height: 30px; 
+    text-align: center;
+}

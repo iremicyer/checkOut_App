@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=" utf-8">
+    <meta name="viewport" content="width=device-width, intial-cale=1">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <title>CHECKOUT APP</title>
+
+</head>
+
+<body>
+    <div class="products">
+        <div class="product">
+            <div>
+                <h1>Brown Bag</h1>
+                <h3>$25.98</h3>
+                <h5> $̶3̶4̶.̶9̶9̶</h5>
+                <img src="img/bag.jpg" alt="bag">
+            </div>
+            <div style="margin-top: -100px;">
+                <div style="margin-left: 250px;">
+                    <button class="minus" type="button">-</button>
+                    <input type="text" value="1" id="demo">
+                    <button class="plus">+</button>
+                    <br>
+                </div>
+                <button class="remove">Remove</button>
+                <h3 class="Total">Product Total:</h3>
+                <input type="text" class="ProductText" value="$25.98">
+                <br><br><br>
+            </div>
+        </div>
+        <div class="product">
+            <div>
+                <h1>White Sport Shoes</h1>
+                <h3>$45.99</h3>
+                <h5> ̶$̶5̶4̶.̶9̶9̶</h5>
+                <img src="img/shoes.jpg" alt="shoes">
+            </div>
+            <div style="margin-top: -100px;">
+                <div style="margin-left: 250px;">
+                    <button class="minus">-</button>
+                    <input type="text" value="1">
+                    <button class="plus">+</button>
+                    <br>
+                </div>
+                <button class="remove">Remove</button>
+                <h3 class="Total">Product Total:</h3>
+                <input type="text" class="ProductText" value="$45.99">
+                <br><br><br>
+            </div>
+        </div>
+
+        <div class="product">
+            <div>
+                <h1>Purple purse</h1>
+                <h3>$74.99</h3>
+                <h5> $̶9̶4̶.̶9̶9̶</h5>
+                <img src="img/purse.jpg" alt="purse">
+            </div>
+            <div style="margin-top: -100px;">
+                <div style="margin-left: 250px;">
+                    <button class="minus">-</button>
+                    <input type="text" value="1">
+                    <button class="plus">+</button>
+                    <br>
+                </div>
+                <button class="remove">Remove</button>
+                <h3 class="Total">Product Total:</h3>
+                <input type="text" class="ProductText" value="$74.99">
+                <br><br><br>
+            </div>
+        </div>
+
+        <hr>
+        <div style="margin-left: 100px;" class="card-total-info">
+            <div style="position:relative;">
+                <h4 class="cart-total-subtotal informations">Subtotal</h4>
+                <input type="text" value="0" class="input_info">
+            </div>
+            <hr>
+            <div style="position:relative;">
+                <h4 class="cart-total-tax informations">Tax (%18)</h4>
+                <input type="text" value="0" class="input_info">
+                <hr>
+                <div style="position:relative">
+                    <h4 class="cart-total-shipping informations">Shipping</h4>
+                    <input type="text" value="0" class="input_info">
+                </div>
+                <hr>
+                <div style="position:relative;">
+                    <h4 class="cart-total-total informations">Total</h4>
+                    <input type="text" value="0" class="input_info">
+                </div>
+            </div>
+        </div>
+        <div>
+            <script>
+
+
+                let text = document.getElementsByClassName("minus");
+                for (let index = 0; index < sayi.length; index++) {
+                    text[index].addEventListener("click", function (params) {
+                        if (document.getElementById('demo').value == "0") {
+
+                            confirm("en az bir ürün olabilir")
+                        }
+                        else {
+                            document.getElementById('demo').value -= numbers[index].innerText;
+                        }
+                    })
+                }
+
+                let minus = document.getElementsByClassName("minus");
+
+                minus.addEventListener("click", function (params) {
+                    document.getElementById('demo').value = numbers[index].innerText;
+                });
+
+
+
+                // let s = 1;
+                // function minus() {
+                //     deger = document.getElementById("minus")
+                //     deger.value = s;
+                //     s--;
+                // }
+
+                // function plus() {
+                //     deger = document.getElementsByClassName("plus");
+                //     deger.value = s;
+                //     s++;
+                // }
+
+                // alert("Ürünü silmek istediğinizden emin misiniz?");
+                // let result = confirm("Ürünü silmek istediğinizden emin misiniz?");
+                // alert(result);
+
+            </script>
+</body>
+
+
+</html>
