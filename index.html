@@ -21,7 +21,7 @@
             <div style="margin-top: -100px;">
                 <div style="margin-left: 250px;">
                     <button class="minus" type="button">-</button>
-                    <input type="text" value="1" id="demo">
+                    <input type="text" value="1">
                     <button class="plus">+</button>
                     <br>
                 </div>
@@ -99,43 +99,31 @@
             <script>
 
 
-                let text = document.getElementsByClassName("minus");
-                for (let index = 0; index < sayi.length; index++) {
-                    text[index].addEventListener("click", function (params) {
-                        if (document.getElementById('demo').value == "0") {
-
-                            confirm("en az bir ürün olabilir")
-                        }
-                        else {
-                            document.getElementById('demo').value -= numbers[index].innerText;
+                let minusBtns = document.getElementsByClassName("minus");
+                for (let index = 0; index < minusBtns.length; index++) {
+                    minusBtns[index].addEventListener("click", function (params) {
+                        minusBtns[index].parentElement.querySelector("input").value--;
+                        if (minusBtns[index].parentElement.querySelector("input").value == "0") {
+                            if (confirm("ürün silinsin mi?")) {
+                                minusBtns[index].parentElement.parentElement.parentElement.remove();
+                            }
+                            else {
+                                minusBtns[index].parentElement.querySelector("input").value++;
+                                return;
+                            }
                         }
                     })
                 }
 
-                let minus = document.getElementsByClassName("minus");
 
-                minus.addEventListener("click", function (params) {
-                    document.getElementById('demo').value = numbers[index].innerText;
-                });
+                let plusBtns = document.getElementsByClassName("plus");
+                for (let index = 0; index < plusBtns.length; index++) {
+                    plusBtns[index].addEventListener("click", function (params) {
 
-
-
-                // let s = 1;
-                // function minus() {
-                //     deger = document.getElementById("minus")
-                //     deger.value = s;
-                //     s--;
-                // }
-
-                // function plus() {
-                //     deger = document.getElementsByClassName("plus");
-                //     deger.value = s;
-                //     s++;
-                // }
-
-                // alert("Ürünü silmek istediğinizden emin misiniz?");
-                // let result = confirm("Ürünü silmek istediğinizden emin misiniz?");
-                // alert(result);
+                        plusBtns[index].parentElement.querySelector("input").value++;
+                        alert(plusBtns[index].parentElement.parentElement.parentElement.querySelector("h3").innerText)
+                    })
+                }
 
             </script>
 </body>
