@@ -99,51 +99,75 @@
             <script>
 
 
-                let minusBtns = document.getElementsByClassName("minus");
-                for (let index = 0; index < minusBtns.length; index++) {
-                    minusBtns[index].addEventListener("click", function (params) {
-                        minusBtns[index].parentElement.querySelector("input").value--;
+                [...document.getElementsByClassName("minus")].forEach((minus) => {
+                    minus.addEventListener("click", function (params) {
 
-                        let c = minusBtns[index].parentElement.parentElement.parentElement.querySelector("h3").innerText.split("$")[1];
-                        let d = minusBtns[index].parentElement.querySelector(".input").value;
-                        minusBtns[index].parentElement.parentElement.querySelector(".ProductText").value = "$" + (c * d);
+                       minus.parentElement.querySelector("input").value--;
 
-                        if (minusBtns[index].parentElement.querySelector("input").value == "0") {
-                            if (confirm("ürün silinsin mi?")) {
-                                minusBtns[index].parentElement.parentElement.parentElement.remove();
+                        let c =minus.parentElement.parentElement.parentElement.querySelector("h3").innerText.split("$")[1];
+                        let d =minus.parentElement.querySelector(".input").value;
+
+                        minus.parentElement.parentElement.querySelector(".ProductText").value = "$" + (c * d);
+
+                        if(minus.parentElement.querySelector("input").value == "0") {
+                            if(confirm("ürün silinsin mi?")){
+                                minus.parentElement.parentElement.parentElement.remove();
                             }
-                            else {
-                                minusBtns[index].parentElement.querySelector("input").value++;
+                            else{
+                                minus.parentElement.querySelector("input").value++;
                                 return;
                             }
-
                         }
 
+                    });
+                });
+                // yorum satırına alınan kısımda for döngüsü ile veriler liste halinde geliyor. foreach döngüsü kullanılarak
+                // listenin diziye çevrilmesi sağlanmıştır !! 
+
+                // let minusBtns = document.getElementsByClassName("minus");
+                // for (let index = 0; index < minusBtns.length; index++) {
+                //     minusBtns[index].addEventListener("click", function (params) {
+                //         minusBtns[index].parentElement.querySelector("input").value--;
+
+                //         let c = minusBtns[index].parentElement.parentElement.parentElement.querySelector("h3").innerText.split("$")[1];
+                //         let d = minusBtns[index].parentElement.querySelector(".input").value;
+                //         minusBtns[index].parentElement.parentElement.querySelector(".ProductText").value = "$" + (c * d);
+
+                //         if (minusBtns[index].parentElement.querySelector("input").value == "0") {
+                //             if (confirm("ürün silinsin mi?")) {
+                //                 minusBtns[index].parentElement.parentElement.parentElement.remove();
+                //             }
+                //             else {
+                //                 minusBtns[index].parentElement.querySelector("input").value++;
+                //                 return;
+                //             }
+
+                //         }
+
+                //     })
+                // }
+                [...document.getElementsByClassName("plus")].forEach((plus) => {
+                    plus.addEventListener("click", function (params) {
+
+                        plus.parentElement.querySelector("input").value++;
+
+                        let a = plus.parentElement.parentElement.parentElement.querySelector("h3").innerText.split("$")[1];
+                        let b = plus.parentElement.querySelector(".input").value;
+
+                        plus.parentElement.parentElement.querySelector(".ProductText").value = "$" + (a * b);
+
+                    });
+                });
+                let removeBtns = document.querySelectorAll(".remove");
+                removeBtns.forEach(removeBtn => {
+                    plus.parentElement.querySelector("input").value++;
+                    removeBtn.addEventListener("click", (e) => {
+                        removeBtn.parentElement.parentElement.remove();
+
                     })
-                }
-                let plusBtns = document.getElementsByClassName("plus");
-                for (let index = 0; index < plusBtns.length; index++) {
-                    plusBtns[index].addEventListener("click", function (params) {
-
-                        plusBtns[index].parentElement.querySelector("input").value++;
-
-                        let a = plusBtns[index].parentElement.parentElement.parentElement.querySelector("h3").innerText.split("$")[1];
-                        let b = plusBtns[index].parentElement.querySelector(".input").value;
-
-                        plusBtns[index].parentElement.parentElement.querySelector(".ProductText").value = "$" + (a * b);
-
-                    })
-                }
-                let removeBtn = document.getElementsByClassName("remove");
-                for (let index = 0; index < removeBtn.length; index++) {
-                    removeBtn[index].addEventListener("click", function (params) {
+                });
 
 
-                        removeBtn[index].parentElement.parentElement.remove();
-
-                    })
-                }
-               
 
 
 
