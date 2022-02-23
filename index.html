@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+
 
 <head>
     <meta charset=" utf-8">
@@ -77,52 +77,60 @@
         <div style="margin-left: 100px;" class="card-total-info">
             <div style="position:relative;">
                 <h4 class="cart-total-subtotal informations">Subtotal</h4>
-                <input type="text" value="0" class="input_info">
+                <input type="text" class="input_info">
             </div>
             <hr>
             <div style="position:relative;">
                 <h4 class="cart-total-tax informations">Tax (%18)</h4>
-                <input type="text" value="0" class="input_info" />
+                <input type="text" class="input_info" />
                 <hr>
                 <div style="position:relative">
                     <h4 class="cart-total-shipping informations">Shipping</h4>
-                    <input type="text" value="0" class="input_info" />
+                    <input type="text" class="input_info" />
                 </div>
                 <hr>
                 <div style="position:relative;">
                     <h4 class="cart-total-total informations">Total</h4>
-                    <input type="text" value="0" class="input_info">
+                    <input type="text" class="input_info">
                 </div>
             </div>
         </div>
         <div>
+            <!-- <html>
+fonksiyon oluştur ve herhangi bir üürnün miktarı arttığında azaldığında veya üürn remove yapıldığında çağrılarak sepet totalini güncel tut. -->
+
             <script>
+window.addEventListener("load", ()=>{
+    document.querySelectorAll(".input_info")[0].value = "$0.0";
+    document.querySelectorAll(".input_info")[1].value = "$0.0";
+    document.querySelectorAll(".input_info")[2].value = "$0.0";
+    document.querySelectorAll(".input_info")[3].value = "$0.0"
+})
 
-
-                [...document.getElementsByClassName("minus")].forEach((minus) => {
+                Array.from(document.getElementsByClassName("minus")).forEach((minus) => {
                     minus.addEventListener("click", function (params) {
 
-                       minus.parentElement.querySelector("input").value--;
+                        minus.parentElement.querySelector("input").value--;
 
-                        let c =minus.parentElement.parentElement.parentElement.querySelector("h3").innerText.split("$")[1];
-                        let d =minus.parentElement.querySelector(".input").value;
+                        let c = minus.parentElement.parentElement.parentElement.querySelector("h3").innerText.split("$")[1];
+                        let d = minus.parentElement.querySelector(".input").value;
 
                         minus.parentElement.parentElement.querySelector(".ProductText").value = "$" + (c * d);
 
-                        if(minus.parentElement.querySelector("input").value == "0") {
-                            if(confirm("ürün silinsin mi?")){
+                        if (minus.parentElement.querySelector("input").value == "0") {
+                            if (confirm("ürün silinsin mi?")) {
                                 minus.parentElement.parentElement.parentElement.remove();
                             }
-                            else{
+                            else {
                                 minus.parentElement.querySelector("input").value++;
                                 return;
                             }
                         }
-
+                        calculateTotalPrices();
                     });
                 });
                 // yorum satırına alınan kısımda for döngüsü ile veriler liste halinde geliyor. foreach döngüsü kullanılarak
-                // listenin diziye çevrilmesi sağlanmıştır !! 
+                // listenin diziye çevrilmesi sağlanmıştır !!
 
                 // let minusBtns = document.getElementsByClassName("minus");
                 // for (let index = 0; index < minusBtns.length; index++) {
@@ -148,27 +156,44 @@
                 // }
                 [...document.getElementsByClassName("plus")].forEach((plus) => {
                     plus.addEventListener("click", function (params) {
-
                         plus.parentElement.querySelector("input").value++;
 
                         let a = plus.parentElement.parentElement.parentElement.querySelector("h3").innerText.split("$")[1];
                         let b = plus.parentElement.querySelector(".input").value;
-
                         plus.parentElement.parentElement.querySelector(".ProductText").value = "$" + (a * b);
+                        calculateTotalPrices();
 
                     });
                 });
+
                 let removeBtns = document.querySelectorAll(".remove");
-                removeBtns.forEach(removeBtn => {
-                    plus.parentElement.querySelector("input").value++;
-                    removeBtn.addEventListener("click", (e) => {
-                        removeBtn.parentElement.parentElement.remove();
+                    removeBtns.forEach(removeBtns => {
 
-                    })
-                });
+                        removeBtns.parentElement.querySelector(".input").value;
 
 
+                        removeBtns.addEventListener("click", (e) => {
+                            removeBtns.parentElement.parentElement.remove();
+                            calculateTotalPrices();
+                        })
+                    });
 
+
+                function calculateTotalPrices() {
+                    let total = 0;
+                    let productTotals = document.querySelectorAll(".ProductText");
+                    productTotals.forEach(productTotal => {
+                        total += parseFloat(productTotal.value.split("$")[1]);
+                        document.querySelectorAll(".input_info")[0].value = "$" + total.toFixed(2);
+                        document.querySelectorAll(".input_info")[1].value = "$" + (total * 0.18).toFixed(2);
+                        document.querySelectorAll(".input_info")[2].value = "$15.00";
+                        document.querySelectorAll(".input_info")[3].value = "$" +  (total + (total * 0.18) + 15).toFixed(2);
+
+
+
+                    });
+
+                }
 
 
 
