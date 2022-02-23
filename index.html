@@ -103,6 +103,11 @@
                 for (let index = 0; index < minusBtns.length; index++) {
                     minusBtns[index].addEventListener("click", function (params) {
                         minusBtns[index].parentElement.querySelector("input").value--;
+
+                        let c = minusBtns[index].parentElement.parentElement.parentElement.querySelector("h3").innerText.split("$")[1];
+                        let d = minusBtns[index].parentElement.querySelector(".input").value;
+                        minusBtns[index].parentElement.parentElement.querySelector(".ProductText").value = "$" + (c * d);
+
                         if (minusBtns[index].parentElement.querySelector("input").value == "0") {
                             if (confirm("ürün silinsin mi?")) {
                                 minusBtns[index].parentElement.parentElement.parentElement.remove();
@@ -111,26 +116,36 @@
                                 minusBtns[index].parentElement.querySelector("input").value++;
                                 return;
                             }
+
                         }
+
                     })
                 }
-
-
                 let plusBtns = document.getElementsByClassName("plus");
                 for (let index = 0; index < plusBtns.length; index++) {
                     plusBtns[index].addEventListener("click", function (params) {
 
                         plusBtns[index].parentElement.querySelector("input").value++;
-                
+
                         let a = plusBtns[index].parentElement.parentElement.parentElement.querySelector("h3").innerText.split("$")[1];
                         let b = plusBtns[index].parentElement.querySelector(".input").value;
 
                         plusBtns[index].parentElement.parentElement.querySelector(".ProductText").value = "$" + (a * b);
 
+                    })
+                }
+                let removeBtn = document.getElementsByClassName("remove");
+                for (let index = 0; index < removeBtn.length; index++) {
+                    removeBtn[index].addEventListener("click", function (params) {
+
+
+                        removeBtn[index].parentElement.parentElement.remove();
 
                     })
                 }
-              
+
+
+
 
             </script>
 </body>
