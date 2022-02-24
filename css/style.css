@@ -109,9 +109,17 @@ font-weight: boldch;
     background-color: lavender;  
     font-size: 13px;
     position: relative;
-    margin-left: 650px;
-    
-    
-
-    
+    margin-left: 80px;
+ 
+}
+.label{
+    color: black;
+    font-weight: bold;
+    position: relative;
+    margin-left: 80px;
+}
+.object{
+    width: 160px;
+     position: relative; 
+     margin-right: 20px;
 }
