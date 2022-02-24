@@ -18,6 +18,7 @@
                 <h5> $̶3̶4̶.̶9̶9̶</h5>
                 <img src="img/bag.jpg" alt="bag">
             </div>
+
             <div style="margin-top: -100px;">
                 <div style="margin-left: 250px;">
                     <button class="minus" type="button">-</button>
@@ -72,130 +73,171 @@
                 <br><br><br>
             </div>
         </div>
+    </div>
 
+    <br>
+    <div>
+        <button class="add">Add Product</button>
+    </div>
+    <hr>
+    <div style="margin-left: 100px;" class="card-total-info">
+        <div style="position:relative;">
+            <h4 class="cart-total-subtotal informations">Subtotal</h4>
+            <input type="text" class="input_info">
+        </div>
         <hr>
-        <div style="margin-left: 100px;" class="card-total-info">
-            <div style="position:relative;">
-                <h4 class="cart-total-subtotal informations">Subtotal</h4>
-                <input type="text" class="input_info">
+        <div style="position:relative;">
+            <h4 class="cart-total-tax informations">Tax (%18)</h4>
+            <input type="text" class="input_info" />
+            <hr>
+            <div style="position:relative">
+                <h4 class="cart-total-shipping informations">Shipping</h4>
+                <input type="text" class="input_info" />
             </div>
             <hr>
             <div style="position:relative;">
-                <h4 class="cart-total-tax informations">Tax (%18)</h4>
-                <input type="text" class="input_info" />
-                <hr>
-                <div style="position:relative">
-                    <h4 class="cart-total-shipping informations">Shipping</h4>
-                    <input type="text" class="input_info" />
-                </div>
-                <hr>
-                <div style="position:relative;">
-                    <h4 class="cart-total-total informations">Total</h4>
-                    <input type="text" class="input_info">
-                </div>
+                <h4 class="cart-total-total informations">Total</h4>
+                <input type="text" class="input_info">
             </div>
         </div>
-        <div>
+    </div>
 
+    <script src="product.js"></script>
+    <script>
+        //   product classı oluştur function ile 
 
-            <script>
-                window.addEventListener("load", () => {
-                    document.querySelectorAll(".input_info")[0].value = "$0.0";
-                    document.querySelectorAll(".input_info")[1].value = "$0.0";
-                    document.querySelectorAll(".input_info")[2].value = "$0.0";
-                    document.querySelectorAll(".input_info")[3].value = "$0.0";
-                })
+        window.addEventListener("load", () => {
+            document.querySelectorAll(".input_info")[0].value = "$0.0";
+            document.querySelectorAll(".input_info")[1].value = "$0.0";
+            document.querySelectorAll(".input_info")[2].value = "$0.0";
+            document.querySelectorAll(".input_info")[3].value = "$0.0";
+        })
 
-                Array.from(document.getElementsByClassName("minus")).forEach((minus) => {
-                    minus.addEventListener("click", function (params) {
+        Array.from(document.getElementsByClassName("minus")).forEach((minus) => {
+            minus.addEventListener("click", function (params) {
 
-                        minus.parentElement.querySelector("input").value--;
+                minus.parentElement.querySelector("input").value--;
 
-                        let c = minus.parentElement.parentElement.parentElement.querySelector("h3").innerText.split("$")[1];
-                        let d = minus.parentElement.querySelector(".input").value;
+                let c = minus.parentElement.parentElement.parentElement.querySelector("h3").innerText.split("$")[1];
+                let d = minus.parentElement.querySelector(".input").value;
 
-                        minus.parentElement.parentElement.querySelector(".ProductText").value = "$" + (c * d);
+                minus.parentElement.parentElement.querySelector(".ProductText").value = "$" + (c * d);
 
-                        if (minus.parentElement.querySelector("input").value == "0") {
-                            if (confirm("ürün silinsin mi?")) {
-                                minus.parentElement.parentElement.parentElement.remove();
-                            }
-                            else {
-                                minus.parentElement.querySelector("input").value++;
-                                return;
-                            }
-                        }
-                        calculateTotalPrices();
-                    });
-                });
-
-
-                // yorum satırına alınan kısımda for döngüsü ile veriler liste halinde geliyor. foreach döngüsü kullanılarak
-                // listenin diziye çevrilmesi sağlanmıştır !!
-
-                // let minusBtns = document.getElementsByClassName("minus");
-                // for (let index = 0; index < minusBtns.length; index++) {
-                //     minusBtns[index].addEventListener("click", function (params) {
-                //         minusBtns[index].parentElement.querySelector("input").value--;
-
-                //         let c = minusBtns[index].parentElement.parentElement.parentElement.querySelector("h3").innerText.split("$")[1];
-                //         let d = minusBtns[index].parentElement.querySelector(".input").value;
-                //         minusBtns[index].parentElement.parentElement.querySelector(".ProductText").value = "$" + (c * d);
-
-                //         if (minusBtns[index].parentElement.querySelector("input").value == "0") {
-                //             if (confirm("ürün silinsin mi?")) {
-                //                 minusBtns[index].parentElement.parentElement.parentElement.remove();
-                //             }
-                //             else {
-                //                 minusBtns[index].parentElement.querySelector("input").value++;
-                //                 return;
-                //             }
-
-                //         }
-
-                //     })
-                // }
-
-
-                [...document.getElementsByClassName("plus")].forEach((plus) => {
-                    plus.addEventListener("click", function (params) {
-                        plus.parentElement.querySelector("input").value++;
-
-                        let a = plus.parentElement.parentElement.parentElement.querySelector("h3").innerText.split("$")[1];
-                        let b = plus.parentElement.querySelector(".input").value;
-                        plus.parentElement.parentElement.querySelector(".ProductText").value = "$" + (a * b);
-                        calculateTotalPrices();
-
-                    });
-                });
-
-                let removeBtns = document.querySelectorAll(".remove");
-                removeBtns.forEach(removeBtns => {
-
-                    removeBtns.parentElement.querySelector(".input").value;
-
-
-                    removeBtns.addEventListener("click", (e) => {
-                        removeBtns.parentElement.parentElement.remove();
-                        calculateTotalPrices();
-                    })
-                });
-
-                function calculateTotalPrices() {
-                    let total = 0;
-                    let productTotals = document.querySelectorAll(".ProductText");
-                    productTotals.forEach(productTotal => {
-                        total += parseFloat(productTotal.value.split("$")[1]);
-                        document.querySelectorAll(".input_info")[0].value = "$" + total.toFixed(2);
-                        document.querySelectorAll(".input_info")[1].value = "$" + (total * 0.18).toFixed(2);
-                        document.querySelectorAll(".input_info")[2].value = "$15.00";
-                        document.querySelectorAll(".input_info")[3].value = "$" + (total + (total * 0.18) + 15).toFixed(2);
-                    });
-
+                if (minus.parentElement.querySelector("input").value == "0") {
+                    if (confirm("ürün silinsin mi?")) {
+                        minus.parentElement.parentElement.parentElement.remove();
+                    }
+                    else {
+                        minus.parentElement.querySelector("input").value++;
+                        return;
+                    }
                 }
+                calculateTotalPrices();
+            });
+        });
 
-            </script>
+
+        // yorum satırına alınan kısımda for döngüsü ile veriler liste halinde geliyor. foreach döngüsü kullanılarak
+        // listenin diziye çevrilmesi sağlanmıştır !!
+
+        // let minusBtns = document.getElementsByClassName("minus");
+        // for (let index = 0; index < minusBtns.length; index++) {
+        //     minusBtns[index].addEventListener("click", function (params) {
+        //         minusBtns[index].parentElement.querySelector("input").value--;
+
+        //         let c = minusBtns[index].parentElement.parentElement.parentElement.querySelector("h3").innerText.split("$")[1];
+        //         let d = minusBtns[index].parentElement.querySelector(".input").value;
+        //         minusBtns[index].parentElement.parentElement.querySelector(".ProductText").value = "$" + (c * d);
+
+        //         if (minusBtns[index].parentElement.querySelector("input").value == "0") {
+        //             if (confirm("ürün silinsin mi?")) {
+        //                 minusBtns[index].parentElement.parentElement.parentElement.remove();
+        //             }
+        //             else {
+        //                 minusBtns[index].parentElement.querySelector("input").value++;
+        //                 return;
+        //             }
+
+        //         }
+
+        //     })
+        // }
+
+
+        [...document.getElementsByClassName("plus")].forEach((plus) => {
+            plus.addEventListener("click", function (params) {
+                plus.parentElement.querySelector("input").value++;
+
+                let a = plus.parentElement.parentElement.parentElement.querySelector("h3").innerText.split("$")[1];
+                let b = plus.parentElement.querySelector(".input").value;
+                plus.parentElement.parentElement.querySelector(".ProductText").value = "$" + (a * b);
+                calculateTotalPrices();
+
+            });
+        });
+
+        let removeBtns = document.querySelectorAll(".remove");
+        removeBtns.forEach(removeBtns => {
+
+            removeBtns.parentElement.querySelector(".input").value;
+
+
+            removeBtns.addEventListener("click", (e) => {
+                removeBtns.parentElement.parentElement.remove();
+                calculateTotalPrices();
+            })
+        });
+
+        function calculateTotalPrices() {
+            let total = 0;
+            let productTotals = document.querySelectorAll(".ProductText");
+            productTotals.forEach(productTotal => {
+                total += parseFloat(productTotal.value.split("$")[1]);
+                document.querySelectorAll(".input_info")[0].value = "$" + total.toFixed(2);
+                document.querySelectorAll(".input_info")[1].value = "$" + (total * 0.18).toFixed(2);
+                document.querySelectorAll(".input_info")[2].value = "$15.00";
+                document.querySelectorAll(".input_info")[3].value = "$" + (total + (total * 0.18) + 15).toFixed(2);
+               
+            });
+           
+        }
+        let Productsdiv = document.querySelector(".products");
+        let addProductBtns = document.querySelectorAll(".add");
+        addProductBtns.forEach(addProductBtn => {
+            addProductBtn.addEventListener("click", addProduct);
+
+        });
+        function addProduct() {
+
+            let newProductObj = new Product("Balenciaga Shoe", "img/shoes.jpg", 300.99, 400.99, 1, 300.99);
+            console.log(newProductObj);
+            let newDiv = document.createElement("div");
+            newDiv.className = "product";
+            newDiv.innerHTML = `<div>
+                <h1>${newProductObj.productName}</h1>
+                <h3>${newProductObj.price}</h3>
+                <h5>${newProductObj.oldPrice}</h5>
+                <img src="${newProductObj.image}" alt="coat">
+            </div>
+            <div style="margin-top: -100px;">
+                <div style="margin-left: 250px;">
+                    <button class="minus">-</button>
+                    <input type="text" value="${newProductObj.quantity}" class="input">
+                    <button class="plus">+</button>
+                    <br>
+                </div>
+                <button class="remove">Remove</button>
+                <h3 class="Total">Product Total:</h3>
+                <input type="text" class="ProductText" value="${newProductObj.productTotal}">
+                <br><br><br>
+            </div>`
+            Productsdiv.prepend(newDiv);
+            calculateTotalPrices();
+        }
+
+    </script>
+
 </body>
-
+product div in içine yeni ürün eklendiğnde de hesaplamaya dahil olmasını sağla. capturing
 
 </html>

@@ -100,3 +100,18 @@ font-weight: boldch;
     text-align: center;
     font-weight: bold;
 }
+.add{
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    font-weight: bold;
+    color: blackS;
+    background-color: lavender;  
+    font-size: 13px;
+    position: relative;
+    margin-left: 650px;
+    
+    
+
+    
+}
